@@ -76,6 +76,11 @@ feature 'restaurants' do
 
       scenario 'user1 tries to delete restaurant of user2' do
         visit '/restaurants'
+        click_link 'Add a restaurant'
+        fill_in 'Name', with: 'KFC'
+        click_button 'Create restaurant'
+        click_link 'Sign out'
+        signup(email: 'jerry@example.com', password: 'testagain', password_confirmation: 'testagain')
         click_link 'Delete KFC'
         expect(page).to have_content 'KFC'
         expect(page).to have_content 'Restaurant cannot be deleted'

@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'haml'
@@ -55,6 +56,7 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
