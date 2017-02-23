@@ -1,4 +1,5 @@
 class Review < ApplicationRecord
+  has_many :endorsements
   belongs_to :user
   belongs_to :restaurant
   validates :rating, inclusion: (1..5)
