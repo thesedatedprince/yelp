@@ -14,4 +14,13 @@ feature 'reviewing' do
     expect(current_path).to eq '/restaurants'
     expect(page).to have_content 'so so'
   end
+
+  scenario 'displays an average rating for all reviews' do
+    signup
+    leave_review('So so', '3')
+    click_link 'Sign out'
+    signup(email: "linda@test.com")
+    leave_review('Great', '5')
+    expect(page).to have_content('Average rating: 4')
+  end
 end
