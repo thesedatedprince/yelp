@@ -5,7 +5,7 @@ feature 'endorsing reviews' do
     signup
     click_link 'Add a restaurant'
     fill_in 'Name', with: 'KFC'
-    click_button 'Create restaurant'
+    click_button 'Create Restaurant'
     expect(page).to have_content 'KFC'
     leave_review('So so', '3')
   end
