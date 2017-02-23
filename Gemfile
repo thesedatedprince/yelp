@@ -1,11 +1,13 @@
 source 'http://rubygems.org'
 
+ruby '2.3.0'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'shoulda'
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'haml'
@@ -56,7 +58,7 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'shoulda'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
