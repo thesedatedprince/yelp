@@ -13,8 +13,8 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   config.paperclip_defaults = {
-  Paperclip::Attachment.default_options[:url] = 'yelp-challenge.s3-website.eu-west-2.amazonaws.com'
-  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
+  Paperclip::Attachment.default_options[:url] = 'yelp-challenge.s3-website.eu-west-2.amazonaws.com',
+  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename',
   :storage => :s3,
   :s3_credentials => {
     :bucket => ENV['S3_BUCKET_NAME'],
