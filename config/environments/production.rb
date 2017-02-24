@@ -2,14 +2,15 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.paperclip_defaults = {
+  Paperclip::Attachment.default_options[:url] = 'yelp-challenge.s3-website.eu-west-2.amazonaws.com'
+  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
   :storage => :s3,
   :s3_credentials => {
     :bucket => ENV['S3_BUCKET_NAME'],
     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
-  Paperclip::Attachment.default_options[:url] = 'yelp-challenge.s3-website.eu-west-2.amazonaws.com'
-  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
+
   }
   # Code is not reloaded between requests.
   config.cache_classes = true
