@@ -2,8 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.paperclip_defaults = {
-  Paperclip::Attachment.default_options[:url] = 'yelp-challenge.s3-website.eu-west-2.amazonaws.com',
-  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename',
+    :url => 'yelp-challenge.s3-website.eu-west-2.amazonaws.com',
+    :path => '/:class/:attachment/:id_partition/:style/:filename',
   :storage => :s3,
   :s3_credentials => {
     :bucket => ENV['S3_BUCKET_NAME'],
