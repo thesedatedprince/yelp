@@ -1,7 +1,7 @@
 - if @restaurants.any?
   - @restaurants.each do |restaurant|
     %br
-    = link_to restaurant.name, restaurant_path(restaurant)
+    %h2= link_to restaurant.name, restaurant_path(restaurant)
     -if user_signed_in?
       -if current_user.id == restaurant.user_id
         = link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant)
@@ -13,7 +13,8 @@
     %ul
     - restaurant.reviews.each do |review|
       %li
-        #{review.thoughts} Rating: #{star_rating(review.rating)}
+        %i "#{review.thoughts}"
+        Rating: #{star_rating(review.rating)}
         = link_to "Endorse", review_endorsements_path(review), class: 'endorsements-link'
         %span.endorsements_count= review.endorsements.count
         = 'endorsement'.pluralize review.endorsements.count
