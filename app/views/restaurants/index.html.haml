@@ -2,6 +2,7 @@
   - @restaurants.each do |restaurant|
     %br
     %h2= link_to restaurant.name, restaurant_path(restaurant)
+    = image_tag restaurant.image.url(:thumb)
     -if user_signed_in?
       -if current_user.id == restaurant.user_id
         = link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant)
