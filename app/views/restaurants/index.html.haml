@@ -1,0 +1,25 @@
+- if @restaurants.any?
+  - @restaurants.each do |restaurant|
+    %br
+    %h2= link_to restaurant.name, restaurant_path(restaurant)
+    = image_tag restaurant.image.url(:thumb)
+    -if user_signed_in?
+      -if current_user.id == restaurant.user_id
+        = link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant)
+        = link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete
+    = link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant)
+    %h3 Average rating:
+    = star_rating(restaurant.average_rating)
+    - @reviews = reviews_for_restaurant(restaurant.id)
+    %ul
+    - restaurant.reviews.each do |review|
+      %li
+        %i "#{review.thoughts}"
+        Rating: #{star_rating(review.rating)}
+        = link_to "Endorse", review_endorsements_path(review), class: 'endorsements-link'
+        %span.endorsements_count= review.endorsements.count
+        = 'endorsement'.pluralize review.endorsements.count
+- else
+  %h1 No restaurants yet!
+
+%a(href='/restaurants/new') Add a restaurant
